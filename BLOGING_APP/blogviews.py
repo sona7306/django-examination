@@ -1,5 +1,6 @@
 import profile
 
+from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 
 from BLOGING_APP.forms import BloggerRegister, BlogPostRegister
@@ -67,3 +68,8 @@ def blogpost_delete(request,id):
 def blogposts_lists(request):
     data=BlogPost.objects.all()
     return render(request, "blogger/blogposts_lists.html", {"data":data})
+
+
+def Log_out(request):
+    logout(request)
+    return redirect('index')

@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
 from BLOGING_APP.models import Blogger, BlogPost
@@ -17,3 +18,7 @@ def bloggers_delete(request,id):
     data =Blogger.objects.get(id=id)
     data.delete()
     return redirect('bloggers_list')
+
+def Log_out(request):
+    logout(request)
+    return redirect('index')

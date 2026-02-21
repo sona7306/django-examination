@@ -24,20 +24,25 @@ def blogger(request):
 
 def login_view(request):
     if request.method == "POST":
-         username = request.POST.get('uname')
-         password = request.POST.get('pass')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-         user = authenticate(request, username=username, password=password)
-         # authenticate= inbuild function aan
-         if user is not None:
-            login(request,user)
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+
             if user.is_staff:
-                return redirect ('admin')
-            elif user.is_blogger:
+                return redirect('admin')
+            else:
                 return redirect('blogger')
-         else:
-             messages.info(request, 'Username or password is incorrect')
+
+        else:
+            messages.info(request, 'invalid credentials')
+
     return render(request, 'login.html')
+
+
 
 def blogger_add(request):
 

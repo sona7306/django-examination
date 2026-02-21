@@ -19,5 +19,7 @@ urlpatterns = [
     path("blogposts_lists",blogviews.blogposts_lists,name="blogposts_lists"),
     path("bloggers_list",adminviews.bloggers_list,name="bloggers_list"),
     path("bloggers_delete/<int:id>/", adminviews.bloggers_delete, name="bloggers_delete"),
+    path("Log_out",adminviews.Log_out,name="Log_out"),
+    path("Log_out",blogviews.Log_out,name="Log_out"),
 
 ]
