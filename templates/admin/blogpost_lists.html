@@ -1,0 +1,35 @@
+{% extends "admin/adminbase.html" %}
+
+{% block content %}
+{%load crispy_forms_tags %}
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col">Document</th>
+      <th scope="col">Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ i.title }}</td>
+      <td>{{ i.content }}</td>
+      <td><img src="{{i.document.url}}" height="100"</td>
+      <td>{{i.date}}</td>
+
+
+
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3" class="text-center text-muted">No data available</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
